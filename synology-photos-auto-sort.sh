@@ -143,7 +143,7 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
 
             # Move the file to target folder if not exist in target folder
             if [[ ! -f ${TARGET}/${YEAR}/${YEAR}.${MONTH}/${NEW_NAME} ]]; then
-                mv -n ${FILE} ${TARGET}/${YEAR}/${YEAR}.${MONTH}/${NEW_NAME}
+                mv -n ${FILE} ${TARGET}/${YEAR}/${MONTH}/${NEW_NAME}
 
                 # Remove the moved file from the array
                 let FILES_COUNTER--
