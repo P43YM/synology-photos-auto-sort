@@ -139,11 +139,16 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
             # Create target folder
             YEAR=${DATE:0:4}
             MONTH=${DATE:5:2}
-            mkdir -p ${TARGET}/${YEAR}/${YEAR}.${MONTH}
+			monthnames=( "Неизвестен" "Январь" "Февраль" "Март" "Апрель" "Май" "Июнь" "Июль" "Август" "Сентябрь" "Октябрь" "Ноябрь" "Декабрь")
+
+			## perform the lookup
+			MONTHNAME=${monthnames[${MONTH}]}
+			
+            mkdir -p ${TARGET}/${YEAR}/${MONTHNAME}
 
             # Move the file to target folder if not exist in target folder
-            if [[ ! -f ${TARGET}/${YEAR}/${MONTH}/${NEW_NAME} ]]; then
-                mv -n ${FILE} ${TARGET}/${YEAR}/${MONTH}/${NEW_NAME}
+            if [[ ! -f ${TARGET}/${YEAR}/${MONTHNAME}/${NEW_NAME} ]]; then
+                mv -n ${FILE} ${TARGET}/${YEAR}/${MONTHNAME}/${NEW_NAME}
 
                 # Remove the moved file from the array
                 let FILES_COUNTER--
@@ -216,7 +221,11 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
                 # Get target file path
                 YEAR=${DATE:0:4}
                 MONTH=${DATE:5:2}
-                TARGET_FILEPATH=${TARGET}/${YEAR}/${MONTH}/${NEW_FILENAME}
+				monthnames=( "Неизвестен" "Январь" "Февраль" "Март" "Апрель" "Май" "Июнь" "Июль" "Август" "Сентябрь" "Октябрь" "Ноябрь" "Декабрь")
+
+				## perform the lookup
+				MONTHNAME=${monthnames[${MONTH}]}
+                TARGET_FILEPATH=${TARGET}/${YEAR}/${MONTHNAME}/${NEW_FILENAME}
 
                 # Test if existing file is the same
                 # Get base64 encoded image
@@ -244,7 +253,7 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
 
                     NEW_FILENAME=${FILENAME=//:}_${UUID}.${EXT,,}
 
-                    mv -n ${FILE} ${TARGET}/${YEAR}/${MONTH}/${NEW_NAME}
+                    mv -n ${FILE} ${TARGET}/${YEAR}/${MONTHNAME}/${NEW_NAME}
 
                     let PROGRESS++
                     echo -ne "$((${PROGRESS} * 100 / ${TOTAL_FILES_COUNTER}))%\033[0K\r"
