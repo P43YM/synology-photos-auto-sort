@@ -138,7 +138,7 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
 
             # Create target folder
             YEAR=${DATE:0:4}
-            MONTH=${DATE:5:2}
+            MONTH=10#${DATE:5:2}
 			monthnames=( "Неизвестен" "Январь" "Февраль" "Март" "Апрель" "Май" "Июнь" "Июль" "Август" "Сентябрь" "Октябрь" "Ноябрь" "Декабрь")
 
 			## perform the lookup
@@ -220,8 +220,8 @@ if [[ ${FILES_COUNTER} != 0 ]]; then
 
                 # Get target file path
                 YEAR=${DATE:0:4}
-                MONTH=${DATE:5:2}
-				monthnames=( "Неизвестен" "Январь" "Февраль" "Март" "Апрель" "Май" "Июнь" "Июль" "Август" "Сентябрь" "Октябрь" "Ноябрь" "Декабрь")
+                MONTH=10#${DATE:5:2}
+				monthnames=("Неизвестен" "Январь" "Февраль" "Март" "Апрель" "Май" "Июнь" "Июль" "Август" "Сентябрь" "Октябрь" "Ноябрь" "Декабрь")
 
 				## perform the lookup
 				MONTHNAME=${monthnames[${MONTH}]}
